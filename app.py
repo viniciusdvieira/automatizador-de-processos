@@ -5,7 +5,8 @@ from selenium.webdriver.support.select import Select
 from time import sleep
 import openpyxl
 
-numero_oab = 133864
+numero_oab = int(input("digite o numero de oab para consulta "))
+estados = input("digite o estado que quer pesquisar ")
 
 #entrar no site da - https://pje-consulta-publica.tjmg.jus.br/
 driver = webdriver.Chrome()
@@ -19,7 +20,7 @@ campo_oab.send_keys(numero_oab)
 #selecionar o estado
 dropdown_estados = driver.find_element(By.XPATH,"//select[@id='fPP:Decoration:estadoComboOAB']")
 opcoes_estados = Select(dropdown_estados)
-opcoes_estados.select_by_visible_text('SP')
+opcoes_estados.select_by_visible_text(estados)
 
 #clicar em pesquisar
 botao_pesquisar = driver.find_element(By.XPATH, "//input[@id='fPP:searchProcessos']")
